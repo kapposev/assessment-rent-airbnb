@@ -1,0 +1,12 @@
+# Databricks notebook source
+airbnb_zip_filepath ='/Workspace/Repos/kapposev@outlook.com/assessment-rent-airbnb/data/airbnb.zip'
+rental_zip_filepath = '/Workspace/Repos/kapposev@outlook.com/assessment-rent-airbnb/data/rentals.zip'
+airbnb_bronze ='dbfs:/FileStore/raw_data/airbnb.csv'
+rent_bronze='dbfs:/FileStore/raw_data/rentals.json'
+airbnb_silver = 'dbfs:/FileStore/cleaned_data/cleaned_airbnb_data.parquet'
+rent_silver = 'dbfs:/FileStore/cleaned_data/cleaned_rent_data.parquet'
+airbnb_gold ='dbfs:/FileStore/final_data/final_airbnb_data.parquet'
+rent_gold ='dbfs:/FileStore/final_data/final_rent_data.parquet'
+rent_final_file_path ='/Workspace/Repos/kapposev@outlook.com/assessment-rent-airbnb/data/output/rent_final.parquet'
+airbnb_final_file_path ='/Workspace/Repos/kapposev@outlook.com/assessment-rent-airbnb/data/output/airbnb_final.parquet'
+output_filepath ='/Workspace/Repos/kapposev@outlook.com/assessment-rent-airbnb/data/output'
