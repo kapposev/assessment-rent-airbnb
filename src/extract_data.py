@@ -28,5 +28,3 @@ unzip_file(rental_file_path, output_directory)
 
 
 # COMMAND ----------
-
-

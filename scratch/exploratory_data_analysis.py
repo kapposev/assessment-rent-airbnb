@@ -22,11 +22,11 @@ display(air.dtypes)
 
 # COMMAND ----------
 
-display(air.select("room_type").distinct())
+display(air.select('room_type').distinct())
 
 # COMMAND ----------
 
-# There are no negative values in a column that would not make sense such as room_type or bedrooms 
+# There are no negative values in a column that would not make sense such as room_type or bedrooms
 display(air.describe())
 
 
@@ -36,13 +36,13 @@ display(air.dropna(subset='zipcode').filter((air['accommodates']>1)&(air['bedroo
 
 # COMMAND ----------
 
-# Records with complete and incomplete zipcodes, should be converted to the simplest form since there is a significant amount of data missing the complete form 
-display(air.filter(air["zipcode"].substr(1, 4) == '1012'))
+# Records with complete and incomplete zipcodes, should be converted to the simplest form since there is a significant amount of data missing the complete form
+display(air.filter(air['zipcode'].substr(1, 4) == '1012'))
 
 
 # COMMAND ----------
 
-display(air.dropna(subset='zipcode').withColumn("first_four", air['zipcode'].substr(1, 4)))
+display(air.dropna(subset='zipcode').withColumn('first_four', air['zipcode'].substr(1, 4)))
 
 # COMMAND ----------
 
@@ -84,20 +84,20 @@ from pyspark.sql.functions import col, regexp_replace
 def remove_chars_from_column(df, column_name, chars_to_remove):
 
     # Construct the regex pattern to remove specified characters
-    regex_pattern = "[" + "\\".join(chars_to_remove) + "]"
-    
+    regex_pattern = '[' + '\\'.join(chars_to_remove) + ']'
+
     # Apply regexp_replace to remove specified characters from the column
-    df = df.withColumn(column_name, regexp_replace(col(column_name), regex_pattern, ""))
-    
+    df = df.withColumn(column_name, regexp_replace(col(column_name), regex_pattern, ''))
+
     return df
 
 # Example usage:
 # Assuming 'rent' is your DataFrame
 # Define the list of characters to remove
-chars_to_remove = [" m2"]
+chars_to_remove = [' m2']
 
 # Call the function to remove specified characters from the specified column
-df = remove_chars_from_column(rent, "areaSqm", chars_to_remove)
+df = remove_chars_from_column(rent, 'areaSqm', chars_to_remove)
 
 # Show the DataFrame with the modified column
 
@@ -107,7 +107,7 @@ display(df)
 
 # COMMAND ----------
 
-df = remove_trailing_leading_spaces(remove_chars_from_column(rent, "deposit", "€ "))
+df = remove_trailing_leading_spaces(remove_chars_from_column(rent, 'deposit', '€ '))
 
 # COMMAND ----------
 
@@ -123,11 +123,11 @@ def remove_trailing_leading_spaces(df):
 
     # Get the names of all string columns
     string_columns = [col_name for col_name, col_type in df.dtypes if col_type == 'string']
-    
+
     # Apply trim to each string column
     for column_name in string_columns:
         df = df.withColumn(column_name, trim(col(column_name)))
-    
+
     return df
 
 df = remove_trailing_leading_spaces(rent)

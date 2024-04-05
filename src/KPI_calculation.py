@@ -42,5 +42,3 @@ pandas_rent.to_parquet(rent_final_file_path)
 pandas_air.to_parquet(airbnb_final_file_path)
 
 # COMMAND ----------
-
-
